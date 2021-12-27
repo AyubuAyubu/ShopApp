@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- <string name="default_web_client_id" translatable="false">639496239283-9e6guo3rqi4q48moj87k77r27ui97j7o.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">639496239283</string>
+    <string name="google_api_key" translatable="false">AIzaSyANK7Q0ioSYAJLsotu8uDGJqv8KYH_1bbw</string>
+    <string name="google_app_id" translatable="false">1:639496239283:android:3c779068b4537ae60018c6</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyANK7Q0ioSYAJLsotu8uDGJqv8KYH_1bbw</string>-->
+    <!-- <string name="google_storage_bucket" translatable="false">myshoppal-cd2c2.appspot.com</string>-->
+    <!--<string name="project_id" translatable="false">myshoppal-cd2c2</string>-->
+ </resources>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "639496239283",
+    "project_id": "myshoppal-cd2c2",
+    "storage_bucket": "myshoppal-cd2c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639496239283:android:3c779068b4537ae60018c6",
+        "android_client_info": {
+          "package_name": "com.bazuma.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "639496239283-mnmn1mutha0c23r4v4r22da4ncq4is0b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bazuma.myapplication",
+            "certificate_hash": "d15f25024af3e95cb9f5af9cf865d1dfa385acb3"
+          }
+        },
+        {
+          "client_id": "639496239283-9e6guo3rqi4q48moj87k77r27ui97j7o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANK7Q0ioSYAJLsotu8uDGJqv8KYH_1bbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "639496239283-9e6guo3rqi4q48moj87k77r27ui97j7o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
