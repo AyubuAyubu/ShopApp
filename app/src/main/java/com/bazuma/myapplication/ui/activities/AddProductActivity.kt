@@ -193,7 +193,7 @@ class AddProductActivity :BaseActivity(), View.OnClickListener {
             et_product_quantity.text.toString().trim{ it<= ' '},
             mProductImageUrl
         )
-        FireStoreClass().uploadProductsDetails(this,product)
+        FireStoreClass().uploadProductDetails(this,product)
     }
     fun imageProductUploadSuccess(imageURL: String) {
         //hideProgressDialog()

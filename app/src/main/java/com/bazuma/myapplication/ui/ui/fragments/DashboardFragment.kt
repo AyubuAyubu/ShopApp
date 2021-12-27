@@ -5,30 +5,30 @@ import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bazuma.myapplication.FirebaseClass.FireStoreClass
 import com.bazuma.myapplication.R
 import com.bazuma.myapplication.R.*
+import com.bazuma.myapplication.models.Product
 import com.bazuma.myapplication.ui.activities.SettingActivity
+import com.bazuma.myapplication.ui.adapters.DashboardItemsListAdapter
+import com.bazuma.myapplication.ui.adapters.MyProductListAdapter
+import kotlinx.android.synthetic.main.fragment_dashboard.*
+import kotlinx.android.synthetic.main.fragment_products.*
+import kotlinx.android.synthetic.main.fragment_products.tv_no_product_found
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //use if we want to use option menu at the fragment
         setHasOptionsMenu(true)
     }
-    //private lateinit var dashboardViewModel: DashboardViewModel
-    //private var _binding: FragmentDashboardBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    //private val binding get() = _binding!!
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-       // dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
-        //_binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root= inflater.inflate(layout.fragment_dashboard,container, false)
 
         return root
@@ -50,10 +50,31 @@ class DashboardFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
-/*
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
 
- */
+    fun successDashboardItemList(dashboardItemList: ArrayList<Product>) {
+        hideProgressDialogForFragment()
+        if(dashboardItemList.size>0) {
+            rv_dashboard_items.visibility =View.VISIBLE
+            tv_no_dashboard_item_found.visibility =View.GONE
+
+            rv_dashboard_items.layoutManager= GridLayoutManager(activity,2)
+            rv_dashboard_items.setHasFixedSize(true)
+
+            val adapterProduct= DashboardItemsListAdapter(requireActivity(),dashboardItemList)
+            rv_dashboard_items.adapter=adapterProduct
+        } else {
+           rv_dashboard_items.visibility = View.GONE
+            tv_no_dashboard_item_found.visibility = View.VISIBLE
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getDashboardItemList()
+    }
+    fun getDashboardItemList(){
+            showProgressDialogForFragment(resources.getString(R.string.please_wait))
+            FireStoreClass().getDashboardItemList(this)
+        }
 }
+

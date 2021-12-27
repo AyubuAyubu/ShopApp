@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/gender_drawable_tab_text_color_selector.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/ic_vector_dashboard.xml" value="0.17291666666666666" />
+        <entry key="app/src/main/res/drawable/ic_vector_delete.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/ic_vector_settings.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/rv_item_image_background.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/layout/activity_add_product.xml" value="0.25" />
@@ -28,7 +29,9 @@
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/fragment_orders.xml" value="0.15260416666666668" />
         <entry key="app/src/main/res/layout/fragment_products.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/item_list_layout.xml" value="0.25588235294117645" />
+        <entry key="app/src/main/res/layout/item_dashboard_layout.xml" value="0.2538167938931298" />
+        <entry key="app/src/main/res/layout/item_list_layout.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_product_layout.xml" value="0.33" />
         <entry key="app/src/main/res/menu/dashboard_menu.xml" value="0.15260416666666668" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.17291666666666666" />
       </map>
