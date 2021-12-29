@@ -74,7 +74,7 @@ class DashboardFragment : BaseFragment() {
     }
     fun getDashboardItemList(){
             showProgressDialogForFragment(resources.getString(R.string.please_wait))
-            FireStoreClass().getDashboardItemList(this)
+            FireStoreClass().getDashboardItemsList(this)
         }
 }
 

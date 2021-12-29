@@ -27,7 +27,8 @@ import java.io.IOException
 
 class AddProductActivity :BaseActivity(), View.OnClickListener {
     private var mSelectedImageFileUri: Uri? =null
-    private var mProductImageUrl: String =""
+    private  var mProductImageUrl: String =""
+    private lateinit var mProductDetaild:Product
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product)

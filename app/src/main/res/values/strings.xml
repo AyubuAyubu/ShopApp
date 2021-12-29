@@ -72,4 +72,23 @@
     <string name="no_products_added_yet">No products added yet!</string>
     <string name="no_dashboard_item_found">No items found!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="product_delete_success_message">Your product is uploaded successfully.</string>
+    <string name="delete_dialog_title">Delete</string>
+    <string name="delete_dialog_message">Are you sure you want to delete the product?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+
+    <string name="btn_lbl_add_to_cart">ADD TO CART</string>
+    <string name="title_my_cart">MY CART</string>
+    <string name="no_cart_item_found">No item found in cart!</string>
+    <string name="lbl_subtotal">Subtotal</string>
+    <string name="lbl_shipping_charge">Shipping Charge</string>
+    <string name="lbl_total_amount">Total Amount</string>
+    <string name="btn_lbl_checkout">Checkout</string>
+    <string name="action_cart">My Cart</string>
+
+    <string name="title_product_details">PRODUCT DETAILS</string>
+    <string name="lbl_product_description">Product Description</string>
+    <string name="lbl_product_details_stock_quantity">Stock Quantity</string>
 </resources>

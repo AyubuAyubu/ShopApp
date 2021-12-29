@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bazuma.myapplication.R
 import com.bazuma.myapplication.models.Product
 import com.bazuma.myapplication.utilis.GlideLoader
-import kotlinx.android.synthetic.main.item_list_layout.view.*
+import kotlinx.android.synthetic.main.item_dashboard_layout.view.*
+import kotlinx.android.synthetic.main.item_product_layout.view.*
 
 class DashboardItemsListAdapter (
     private val context: Context,
@@ -30,6 +31,7 @@ class DashboardItemsListAdapter (
                 GlideLoader(context).loadProductPicture(model.image,holder.itemView.iv_item_image)
                 holder.itemView.tv_item_name.text =model.title
                 holder.itemView.tv_item_price.text ="Ksh${model.price}"
+
             }
         }
 
