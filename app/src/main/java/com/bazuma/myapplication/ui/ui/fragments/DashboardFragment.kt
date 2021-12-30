@@ -11,6 +11,7 @@ import com.bazuma.myapplication.FirebaseClass.FireStoreClass
 import com.bazuma.myapplication.R
 import com.bazuma.myapplication.R.*
 import com.bazuma.myapplication.models.Product
+import com.bazuma.myapplication.ui.activities.CartListActivity
 import com.bazuma.myapplication.ui.activities.SettingActivity
 import com.bazuma.myapplication.ui.adapters.DashboardItemsListAdapter
 import com.bazuma.myapplication.ui.adapters.MyProductListAdapter
@@ -45,6 +46,10 @@ class DashboardFragment : BaseFragment() {
         when(id){
             R.id.action_settings->{
                 startActivity(Intent(activity, SettingActivity::class.java))
+                return true
+            }
+            R.id.action_cart->{
+                startActivity(Intent(activity, CartListActivity::class.java))
                 return true
             }
         }

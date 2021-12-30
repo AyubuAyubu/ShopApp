@@ -5,11 +5,14 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.18645833333333334" />
         <entry key="app/src/main/res/drawable-v24/ic_vector_add.xml" value="0.17291666666666666" />
+        <entry key="app/src/main/res/drawable-v24/ic_vector_cart.xml" value="0.17291666666666666" />
+        <entry key="app/src/main/res/drawable-v24/ic_vector_remove.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/app_gradient_color_background.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/drawable_gender_tab_selector.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/gender_drawable_tab_text_color_selector.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.17291666666666666" />
+        <entry key="app/src/main/res/drawable/ic_vector_add.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/ic_vector_dashboard.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/ic_vector_delete.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/ic_vector_settings.xml" value="0.17291666666666666" />
@@ -32,6 +35,7 @@
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/fragment_orders.xml" value="0.15260416666666668" />
         <entry key="app/src/main/res/layout/fragment_products.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_cart_list.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_dashboard_layout.xml" value="0.2538167938931298" />
         <entry key="app/src/main/res/layout/item_list_layout.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_product_layout.xml" value="0.33" />

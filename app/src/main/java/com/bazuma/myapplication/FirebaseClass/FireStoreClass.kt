@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
 import androidx.fragment.app.Fragment
+import com.bazuma.myapplication.models.CartItem
 import com.bazuma.myapplication.models.Product
 import com.bazuma.myapplication.models.User
 import com.bazuma.myapplication.ui.activities.*
@@ -362,56 +363,7 @@ class FireStoreClass {
 
                     }
                 }
-    fun deleteProduct(fragment: ProductsFragment, productId: String) {
 
-        mFireStore.collection(Constants.PRODUCTS)
-            .document(productId)
-            .delete()
-            .addOnSuccessListener {
-
-                // Notify the success result to the base class.
-                fragment.productDeleteSuccess()
-            }
-            .addOnFailureListener { e ->
-
-                // Hide the progress dialog if there is an error.
-                fragment.hideProgressDialog()
-
-                Log.e(
-                    fragment.requireActivity().javaClass.simpleName,
-                    "Error while deleting the product.",
-                    e
-                )
-            }
-    }
-
-    /**
-     * A function to get the product details based on the product id.
-     */
-    fun getProductDetails(activity: ProductDetailsActivity, productId: String) {
-
-        // The collection name for PRODUCTS
-        mFireStore.collection(Constants.PRODUCTS)
-            .document(productId)
-            .get() // Will get the document snapshots.
-            .addOnSuccessListener { document ->
-
-                // Here we get the product details in the form of document.
-                Log.e(activity.javaClass.simpleName, document.toString())
-
-                // Convert the snapshot to the object of Product data model class.
-                val product = document.toObject(Product::class.java)!!
-
-                activity.productDetailsSuccess(product)
-            }
-            .addOnFailureListener { e ->
-
-                // Hide the progress dialog if there is an error.
-                activity.hideProgressDialog()
-
-                Log.e(activity.javaClass.simpleName, "Error while getting the product details.", e)
-            }
-    }
 
     /**
      * A function to add the item to the cart in the cloud firestore.
@@ -419,7 +371,7 @@ class FireStoreClass {
      * @param activity
      * @param addToCart
      */
-    fun addCartItems(activity: ProductDetailsActivity, addToCart: Cart) {
+    fun addCartItems(activity: ProductDetailsActivity, addToCart: CartItem) {
 
         mFireStore.collection(Constants.CART_ITEMS)
             .document()
@@ -442,7 +394,67 @@ class FireStoreClass {
             }
     }
 
+    fun checkIfItemExistInCart(activity:ProductDetailsActivity,productId:String){
+        mFireStore.collection(Constants.CART_ITEMS)
+            .whereEqualTo(Constants.USER_ID,getCurrentUserID())
+            .whereEqualTo(Constants.PRODUCT_ID,productId)
+            .get()
+            .addOnSuccessListener { document->
+                Log.e(activity.javaClass.simpleName,document.documents.toString())
+                if (document.documents.size>0){
+                    activity.productExistsInCart()
+                }else{
+                    activity.hideProgressDialog()
+                }
+            }
+            .addOnFailureListener { e->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while checking existing item cart",
+                    e
+                )
+
+            }
+
+    }
+
+    fun getCartList(activity:CartListActivity) {
+        mFireStore.collection(Constants.CART_ITEMS)
+            .whereEqualTo(Constants.USER_ID,getCurrentUserID())
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(activity.javaClass.simpleName, document.documents.toString())
+                val cartList: ArrayList<CartItem> = ArrayList()
+
+                // A for loop as per the list of documents to convert them into Products ArrayList.
+                for (i in document.documents) {
+
+                    val cartItem = i.toObject(CartItem::class.java)!!
+                    cartItem.id = i.id
+                    cartList.add(cartItem)
+
+                }
+                when(activity){
+                    is CartListActivity->{
+                        activity.successCartItemsList(cartList)
+                    }
+
+                }
+
+            }
+            .addOnFailureListener { e ->
+                when(activity) {
+                    is CartListActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+                Log.e(activity.javaClass.simpleName, "Error while getting cart items list.", e)
+            }
+    }
+
 }
+
 
 
 
