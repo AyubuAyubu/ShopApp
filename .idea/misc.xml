@@ -15,11 +15,16 @@
         <entry key="app/src/main/res/drawable/ic_vector_add.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/ic_vector_dashboard.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/ic_vector_delete.xml" value="0.17291666666666666" />
+        <entry key="app/src/main/res/drawable/ic_vector_edit.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/ic_vector_settings.xml" value="0.17291666666666666" />
+        <entry key="app/src/main/res/drawable/item_primary_color_border_background.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/drawable/rv_item_image_background.xml" value="0.17291666666666666" />
+        <entry key="app/src/main/res/layout/activity_add_edit_address.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_add_product.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_address_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_base.xml" value="0.15625" />
         <entry key="app/src/main/res/layout/activity_cart_list.xml" value="0.21" />
+        <entry key="app/src/main/res/layout/activity_checkout.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_forgot_password2.xml" value="0.15260416666666668" />
@@ -35,6 +40,8 @@
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/fragment_orders.xml" value="0.15260416666666668" />
         <entry key="app/src/main/res/layout/fragment_products.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_address_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_cart_layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_cart_list.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_dashboard_layout.xml" value="0.2538167938931298" />
         <entry key="app/src/main/res/layout/item_list_layout.xml" value="0.33" />

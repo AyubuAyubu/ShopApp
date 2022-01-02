@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.bazuma.myapplication.FirebaseClass.FireStoreClass
 import com.bazuma.myapplication.R
 import com.bazuma.myapplication.models.CartItem
@@ -86,10 +87,25 @@ class ProductDetailsActivity :BaseActivity(),View.OnClickListener {
         tv_product_details_description.text=product.description
         tv_product_details_available_quantity.text=product.stock_quantity
 
-        if (FireStoreClass().getCurrentUserID()==product.user_id){
+        if (product.stock_quantity.toInt()==0){
             hideProgressDialog()
-        }else{
-            FireStoreClass().checkIfItemExistInCart(this,mProductID)
+
+            btn_add_to_cart.visibility=View.GONE
+            tv_product_details_available_quantity.text=
+                resources.getString(R.string.lbl_out_of_stock)
+
+            tv_product_details_available_quantity.setTextColor(
+                ContextCompat.getColor(
+                    this,
+                    R.color.colorSnackBarError
+                )
+            )
+        }else {
+            if (FireStoreClass().getCurrentUserID() == product.user_id) {
+                hideProgressDialog()
+            } else {
+                FireStoreClass().checkIfItemExistInCart(this, mProductID)
+            }
         }
     }
 

@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
 import androidx.fragment.app.Fragment
+import com.bazuma.myapplication.models.Address
 import com.bazuma.myapplication.models.CartItem
 import com.bazuma.myapplication.models.Product
 import com.bazuma.myapplication.models.User
@@ -18,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.myshoppal.ui.activities.AddEditAddressActivity
 
 class FireStoreClass {
     private val mFireStore = FirebaseFirestore.getInstance()
@@ -343,26 +345,26 @@ class FireStoreClass {
             }
     }
 
-    fun getProductsDetails(activity: ProductDetailsActivity,productID: String) {
-            mFireStore.collection(Constants.PRODUCT)
-                .document(productID)
-                .get()
-                .addOnSuccessListener { document ->
-                    Log.i(activity.javaClass.simpleName, document.toString())
-                    //We have received Document snapshot converted into product data model object
-                    val product = document.toObject(Product::class.java)!!
-                    activity.productDetailsSuccess(product)!!
-                }
-                .addOnFailureListener { e ->
-                    activity.hideProgressDialog()
-                    Log.e(
-                        activity.javaClass.simpleName,
-                        "Error while getting product details",
-                        e
-                    )
+    fun getProductsDetails(activity: ProductDetailsActivity, productID: String) {
+        mFireStore.collection(Constants.PRODUCT)
+            .document(productID)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.i(activity.javaClass.simpleName, document.toString())
+                //We have received Document snapshot converted into product data model object
+                val product = document.toObject(Product::class.java)!!
+                activity.productDetailsSuccess(product)!!
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while getting product details",
+                    e
+                )
 
-                    }
-                }
+            }
+    }
 
 
     /**
@@ -394,20 +396,20 @@ class FireStoreClass {
             }
     }
 
-    fun checkIfItemExistInCart(activity:ProductDetailsActivity,productId:String){
+    fun checkIfItemExistInCart(activity: ProductDetailsActivity, productId: String) {
         mFireStore.collection(Constants.CART_ITEMS)
-            .whereEqualTo(Constants.USER_ID,getCurrentUserID())
-            .whereEqualTo(Constants.PRODUCT_ID,productId)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
+            .whereEqualTo(Constants.PRODUCT_ID, productId)
             .get()
-            .addOnSuccessListener { document->
-                Log.e(activity.javaClass.simpleName,document.documents.toString())
-                if (document.documents.size>0){
+            .addOnSuccessListener { document ->
+                Log.e(activity.javaClass.simpleName, document.documents.toString())
+                if (document.documents.size > 0) {
                     activity.productExistsInCart()
-                }else{
+                } else {
                     activity.hideProgressDialog()
                 }
             }
-            .addOnFailureListener { e->
+            .addOnFailureListener { e ->
                 activity.hideProgressDialog()
                 Log.e(
                     activity.javaClass.simpleName,
@@ -419,9 +421,33 @@ class FireStoreClass {
 
     }
 
-    fun getCartList(activity:CartListActivity) {
+    fun addAddress(activity: AddEditAddressActivity, addressInfo: Address) {
+
+        // Collection name address.
+        mFireStore.collection(Constants.ADDRESSES)
+            .document()
+            // Here the userInfo are Field and the SetOption is set to merge. It is for if we wants to merge
+            .set(addressInfo, SetOptions.merge())
+            .addOnSuccessListener {
+
+
+                // Here call a function of base activity for transferring the result to it.
+                activity.addUpdateAddressSuccess()
+
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while adding the address.",
+                    e
+                )
+            }
+    }
+
+    fun getCartList(activity: Activity) {
         mFireStore.collection(Constants.CART_ITEMS)
-            .whereEqualTo(Constants.USER_ID,getCurrentUserID())
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
             .get()
             .addOnSuccessListener { document ->
                 Log.e(activity.javaClass.simpleName, document.documents.toString())
@@ -435,8 +461,11 @@ class FireStoreClass {
                     cartList.add(cartItem)
 
                 }
-                when(activity){
-                    is CartListActivity->{
+                when (activity) {
+                    is CartListActivity -> {
+                        activity.successCartItemsList(cartList)
+                    }
+                    is CheckoutActivity -> {
                         activity.successCartItemsList(cartList)
                     }
 
@@ -444,8 +473,11 @@ class FireStoreClass {
 
             }
             .addOnFailureListener { e ->
-                when(activity) {
+                when (activity) {
                     is CartListActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                    is CheckoutActivity -> {
                         activity.hideProgressDialog()
                     }
                 }
@@ -453,7 +485,178 @@ class FireStoreClass {
             }
     }
 
+    fun removeItemFromCart(context: Context, cart_id: String) {
+        mFireStore.collection(Constants.CART_ITEMS)
+            .document(cart_id)
+            .get()
+            .addOnSuccessListener {
+                when (context) {
+                    is CartListActivity -> {
+                        context.itemRemoveSuccess()
+                    }
+                }
+            }
+            .addOnFailureListener {
+                when (context) {
+                    is CartListActivity -> {
+                        context.hideProgressDialog()
+                    }
+                }
+                Log.e(
+                    context.javaClass.simpleName,
+                    "Error while removing the item from cart list"
+                )
+            }
+    }
+
+    fun getAllProductList(activity: Activity) {
+        mFireStore.collection(Constants.PRODUCT)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(activity.javaClass.simpleName, document.documents.toString())
+                val productList: ArrayList<Product> = ArrayList()
+
+                // A for loop as per the list of documents to convert them into Products ArrayList.
+                for (i in document.documents) {
+
+                    val product = i.toObject(Product::class.java)!!
+                    product!!.my_product_id = i.id
+                    productList.add(product)
+
+                }
+                when (activity) {
+                    is CartListActivity -> {
+                        activity.successProductsListFromFirestore(productList)
+                    }
+                    is CheckoutActivity -> {
+                        activity.successProductsListFromFirestore(productList)
+                    }
+                }
+
+            }
+            .addOnFailureListener { e ->
+                when (activity) {
+                    is CartListActivity -> {
+                        activity.hideProgressDialog()
+                        Log.e("Get product list", "Error while getting all product list", e)
+                    }
+                }
+            }
+    }
+
+    fun updateMyCart(context: Context, cart_id: String, itemHashMap: HashMap<String, Any>) {
+
+        // Cart items collection name
+        mFireStore.collection(Constants.CART_ITEMS)
+            .document(cart_id) // cart id
+            .update(itemHashMap) // A HashMap of fields which are to be updated.
+            .addOnSuccessListener {
+
+                // Notify the success result of the updated cart items list to the base class.
+                when (context) {
+                    is CartListActivity -> {
+                        //   context.itemUpdateSuccess()
+                    }
+                }
+            }
+            .addOnFailureListener { e ->
+
+                // Hide the progress dialog if there is any error.
+                when (context) {
+                    is CartListActivity -> {
+                        context.hideProgressDialog()
+                    }
+                }
+
+                Log.e(
+                    context.javaClass.simpleName,
+                    "Error while updating the cart item.",
+                    e
+                )
+            }
+    }
+
+    fun getAddressesList(activity: AddressListActivity) {
+        // The collection name for PRODUCTS
+        mFireStore.collection(Constants.ADDRESSES)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
+            .get() // Will get the documents snapshots.
+            .addOnSuccessListener { document ->
+                // Here we get the list of boards in the form of documents.
+                Log.e(activity.javaClass.simpleName, document.documents.toString())
+                // Here we have created a new instance for address ArrayList.
+                val addressList: ArrayList<Address> = ArrayList()
+
+                // A for loop as per the list of documents to convert them into Boards ArrayList.
+                for (i in document.documents) {
+
+                    val address = i.toObject(Address::class.java)!!
+                    address.id = i.id
+
+                    addressList.add(address)
+                }
+
+
+                activity.successAddressListFromFirestore(addressList)
+                // END
+            }
+            .addOnFailureListener { e ->
+                // Here call a function of base activity for transferring the result to it.
+
+                activity.hideProgressDialog()
+
+                Log.e(activity.javaClass.simpleName, "Error while getting the address list.", e)
+            }
+
+    }
+
+    fun updateAddress(activity: AddEditAddressActivity,
+        addressInfo: Address,
+        addressId: String) {
+
+        mFireStore.collection(Constants.ADDRESSES)
+            .document(addressId)
+            // Here the userInfo are Field and the SetOption is set to merge. It is for if we wants to merge
+            .set(addressInfo, SetOptions.merge())
+            .addOnSuccessListener {
+
+                // Here call a function of base activity for transferring the result to it.
+                activity.addUpdateAddressSuccess()
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while updating the Address.",
+                    e
+                )
+            }
+    }
+
+    fun deleteAddress(activity: AddressListActivity, addressId: String) {
+            mFireStore.collection(Constants.ADDRESSES)
+                .document(addressId)
+                .delete()
+                .addOnSuccessListener {
+                    // Here call a function of base activity for transferring the result to it.
+                    activity.deleteAddressSuccess()
+                    // END
+                }
+                .addOnFailureListener { e ->
+                    activity.hideProgressDialog()
+                    Log.e(
+                        activity.javaClass.simpleName,
+                        "Error while deleting the address.",
+                        e
+                    )
+                }
+        }
+
+    fun successProductsListFromFirestore(productList:ArrayList<Product>){}
 }
+
+
+
 
 
 
