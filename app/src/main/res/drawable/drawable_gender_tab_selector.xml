@@ -5,9 +5,9 @@
             <solid android:color="@color/colorAccent"/>
         <corners
             android:bottomLeftRadius="@dimen/gender_radio_button_radius"
-            android:TopLeftRadius="@dimen/gender_radio_button_radius"
+            android:topLeftRadius="@dimen/gender_radio_button_radius"
             android:bottomRightRadius="@dimen/gender_radio_button_radius"
-            android:TopRightRadius="@dimen/gender_radio_button_radius"/>
+            android:topRightRadius="@dimen/gender_radio_button_radius"/>
         </shape>
     </item>
 
@@ -19,8 +19,8 @@
             <corners
                 android:bottomLeftRadius="@dimen/gender_radio_button_radius"
                 android:bottomRightRadius="@dimen/gender_radio_button_radius"
-                android:TopLeftRadius="@dimen/gender_radio_button_radius"
-                android:TopRightRadius="@dimen/gender_radio_button_radius"/>
+                android:topLeftRadius="@dimen/gender_radio_button_radius"
+                android:topRightRadius="@dimen/gender_radio_button_radius"/>
 
         </shape>
     </item>

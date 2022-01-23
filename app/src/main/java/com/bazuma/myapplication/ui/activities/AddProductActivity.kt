@@ -14,7 +14,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.bazuma.myapplication.FirebaseClass.FireStoreClass
+import com.bazuma.myapplication.FirebaseClass.FirestoreClass
 import com.bazuma.myapplication.R
 import com.bazuma.myapplication.models.Product
 import com.bazuma.myapplication.utilis.Constants
@@ -178,7 +178,7 @@ class AddProductActivity :BaseActivity(), View.OnClickListener {
     }
     private fun uploadProductImage(){
         showProgressDialog(resources.getString(R.string.please_wait))
-        FireStoreClass().uploadImageToCloudStorage(this,mSelectedImageFileUri,Constants.PRODUCT_IMAGE)
+        FirestoreClass().uploadImageToCloudStorage(this,mSelectedImageFileUri,Constants.PRODUCT_IMAGE)
     }
     private fun uploadProductDetails(){
         var username=this.getSharedPreferences(
@@ -186,7 +186,7 @@ class AddProductActivity :BaseActivity(), View.OnClickListener {
             .getString(Constants.LOGGED_IN_USERNAME,"")!!
 
         val product= Product(
-            FireStoreClass().getCurrentUserID(),
+            FirestoreClass().getCurrentUserID(),
             username,
             et_product_title.text.toString().trim{it<= ' '},
             et_product_description.text.toString().trim{ it<= ' '},
@@ -194,7 +194,7 @@ class AddProductActivity :BaseActivity(), View.OnClickListener {
             et_product_quantity.text.toString().trim{ it<= ' '},
             mProductImageUrl
         )
-        FireStoreClass().uploadProductDetails(this,product)
+        FirestoreClass().uploadProductDetails(this,product)
     }
     fun imageProductUploadSuccess(imageURL: String) {
         //hideProgressDialog()

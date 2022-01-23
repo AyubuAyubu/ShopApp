@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import com.bazuma.myapplication.FirebaseClass.FireStoreClass
+import com.bazuma.myapplication.FirebaseClass.FirestoreClass
 import com.bazuma.myapplication.R
 import com.bazuma.myapplication.models.CartItem
 import com.bazuma.myapplication.models.Product
@@ -17,7 +17,8 @@ import kotlinx.android.synthetic.main.activity_product_details.*
 
 class ProductDetailsActivity :BaseActivity(),View.OnClickListener {
         private var mProductID:String=""
-         private lateinit var mProductDetails:Product
+        private lateinit var mProductDetails:Product
+        private var productOwnerID:String=""
         override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_details)
@@ -25,11 +26,11 @@ class ProductDetailsActivity :BaseActivity(),View.OnClickListener {
             if (intent.hasExtra(Constants.EXTRA_PRODUCT_ID)){
                 mProductID=intent.getStringExtra(Constants.EXTRA_PRODUCT_ID)!!
             }
-            var productOwnerID:String=""
+
             if (intent.hasExtra(Constants.EXTRA_PRODUCT_OWNER_ID)){
                 productOwnerID=intent.getStringExtra(Constants.EXTRA_PRODUCT_OWNER_ID)!!
             }
-            if(FireStoreClass().getCurrentUserID()==productOwnerID){
+            if(FirestoreClass().getCurrentUserID()==productOwnerID){
                 btn_add_to_cart.visibility= View.GONE
             }else{
                 btn_add_to_cart.visibility=View.VISIBLE
@@ -42,7 +43,7 @@ class ProductDetailsActivity :BaseActivity(),View.OnClickListener {
     }
     fun getProductDetails(){
         showProgressDialog(resources.getString(R.string.please_wait))
-        FireStoreClass().getProductsDetails(this,mProductID)
+        FirestoreClass().getProductsDetails(this,mProductID)
     }
 
     private fun setActionBar() {
@@ -58,7 +59,8 @@ class ProductDetailsActivity :BaseActivity(),View.OnClickListener {
 
     fun addToCart(){
         val cartItem=CartItem(
-            FireStoreClass().getCurrentUserID(),
+            FirestoreClass().getCurrentUserID(),
+            productOwnerID,
             mProductID,
             mProductDetails.title,
             mProductDetails.price,
@@ -66,7 +68,7 @@ class ProductDetailsActivity :BaseActivity(),View.OnClickListener {
             Constants.DEFAULT_CART_QUANTITY
         )
         showProgressDialog(resources.getString(R.string.please_wait))
-        FireStoreClass().addCartItems(this,cartItem)
+        FirestoreClass().addCartItems(this,cartItem)
     }
 
    fun productExistsInCart(){
@@ -101,10 +103,10 @@ class ProductDetailsActivity :BaseActivity(),View.OnClickListener {
                 )
             )
         }else {
-            if (FireStoreClass().getCurrentUserID() == product.user_id) {
+            if (FirestoreClass().getCurrentUserID() == product.user_id) {
                 hideProgressDialog()
             } else {
-                FireStoreClass().checkIfItemExistInCart(this, mProductID)
+                FirestoreClass().checkIfItemExistInCart(this, mProductID)
             }
         }
     }

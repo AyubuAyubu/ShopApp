@@ -94,7 +94,7 @@ tools:context=".ui.activities.SettingsActivity">
         android:layout_below="@id/fl_user_image"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/settings_name_marginTop"
-        android:textColor="@color/colorDarkGrey"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/settings_name_textSize"
         tools:text="Mr XYZ" />
 

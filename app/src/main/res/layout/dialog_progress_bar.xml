@@ -25,7 +25,7 @@
         android:layout_marginStart="@dimen/progress_text_marginStart"
         android:text="@string/please_wait"
         android:textColor="@color/colorPrimaryText"
-        android:textSize="@dimen/progress_title_textSize"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/progressBar"

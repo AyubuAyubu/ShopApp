@@ -12,7 +12,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.bazuma.myapplication.FirebaseClass.FireStoreClass
+import com.bazuma.myapplication.FirebaseClass.FirestoreClass
 import com.bazuma.myapplication.R
 import com.bazuma.myapplication.models.User
 import com.bazuma.myapplication.ui.MainActivity
@@ -123,7 +123,7 @@ class UsersProfileActivity : BaseActivity(), View.OnClickListener {
 
                         if (mSelectedImageFileUri != null) {
 
-                            FireStoreClass().uploadImageToCloudStorage(
+                            FirestoreClass().uploadImageToCloudStorage(
                                 this,
                                 mSelectedImageFileUri,
                                 Constants.USER_PROFILE_IMAGE
@@ -271,7 +271,7 @@ class UsersProfileActivity : BaseActivity(), View.OnClickListener {
         // END
 
         // call the registerUser function of FireStore class to make an entry in the database.
-        FireStoreClass().updateUserProfileData(
+        FirestoreClass().updateUserProfileData(
             this,
             userHashMap
         )

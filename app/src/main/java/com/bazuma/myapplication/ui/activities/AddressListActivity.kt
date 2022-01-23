@@ -1,22 +1,19 @@
 package com.bazuma.myapplication.ui.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bazuma.myapplication.FirebaseClass.FireStoreClass
+import com.bazuma.myapplication.FirebaseClass.FirestoreClass
 import com.bazuma.myapplication.R
 import com.bazuma.myapplication.models.Address
 import com.bazuma.myapplication.ui.adapters.AddressItemListAdapter
 import com.bazuma.myapplication.utilis.Constants
 import com.bazuma.myapplication.utilis.SwipeToDeleteCallBack
 import com.bazuma.myapplication.utilis.SwipeToEditCallback
-import com.myshoppal.ui.activities.AddEditAddressActivity
 import kotlinx.android.synthetic.main.activity_address_list.*
 import kotlinx.android.synthetic.main.activity_setting.*
 
@@ -77,7 +74,7 @@ class AddressListActivity : BaseActivity() {
                 val deleteSwipeHandler = object : SwipeToDeleteCallBack(this) {
                     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                         showProgressDialog(resources.getString(R.string.please_wait))
-                        FireStoreClass().deleteAddress(this@AddressListActivity,
+                        FirestoreClass().deleteAddress(this@AddressListActivity,
                             addressList[viewHolder.adapterPosition].id)
                     }
                 }
@@ -97,7 +94,7 @@ class AddressListActivity : BaseActivity() {
         // Show the progress dialog.
         showProgressDialog(resources.getString(R.string.please_wait))
 
-        FireStoreClass().getAddressesList(this@AddressListActivity)
+        FirestoreClass().getAddressesList(this@AddressListActivity)
     }
 
     private fun setActionBar(){

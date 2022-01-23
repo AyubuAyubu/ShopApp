@@ -6,7 +6,7 @@ import android.text.TextUtils
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
-import com.bazuma.myapplication.FirebaseClass.FireStoreClass
+import com.bazuma.myapplication.FirebaseClass.FirestoreClass
 import com.bazuma.myapplication.R
 import com.bazuma.myapplication.models.User
 import com.google.android.gms.tasks.OnCompleteListener
@@ -136,7 +136,7 @@ class RegisterActivity : BaseActivity() {
                                 et_last_name.text.toString().trim{ it<= ' '},
                                 et_email.text.toString().trim{ it<= ' '}
                             )
-                            FireStoreClass().registerUser(this@RegisterActivity,user)
+                            FirestoreClass().registerUser(this@RegisterActivity,user)
                            // FirebaseAuth.getInstance().signOut()
                             //finish()
                         }else{

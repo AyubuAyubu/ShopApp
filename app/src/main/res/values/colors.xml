@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#d4af37</color>
-    <color name="colorPrimaryDark">#222934</color>
+    <color name="colorPrimaryDark">#7C8FAB</color>
     <color name="colorAccent">#d4af37</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorThemeBrown">#80471C</color>
@@ -14,8 +14,13 @@
     <color name="colorBorder">#E8E6E6</color>
     <color name="colorImageViewBackground">#E1E1E1</color>
     <color name="colorOfWhite">#F8F8F8</color>
-    <color name="item_value_text_color">#545353</color>
-    <color name="dashboard_item_detail_background_bg">#545353</color>
+    <color name="item_value_text_color">#414040</color>
 
+    <color name="dashboard_item_detail_background_bg">#ffffff</color>
+
+    <color name="dashboard_item_details_bg">#F3F3F3</color>
+
+    <color name="colorOrderStatusInProcess">#FF9800</color>
+    <color name="colorOrderStatusDelivered">#8BC34A</color>
 
 </resources>

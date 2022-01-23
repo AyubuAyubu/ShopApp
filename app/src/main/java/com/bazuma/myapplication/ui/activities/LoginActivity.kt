@@ -7,7 +7,7 @@ import android.text.TextUtils
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import com.bazuma.myapplication.FirebaseClass.FireStoreClass
+import com.bazuma.myapplication.FirebaseClass.FirestoreClass
 import com.bazuma.myapplication.R
 import com.bazuma.myapplication.models.User
 import com.bazuma.myapplication.utilis.Constants
@@ -92,7 +92,7 @@ class LoginActivity : BaseActivity(),View.OnClickListener {
                         //if log is successfully DONE
                         if (task.isSuccessful) {
                             //Log in the user
-                            FireStoreClass().getUsersDetails(this@LoginActivity)
+                            FirestoreClass().getUserDetails(this@LoginActivity)
 
                         } else {
                             hideProgressDialog()

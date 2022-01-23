@@ -7,7 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bazuma.myapplication.FirebaseClass.FireStoreClass
+import com.bazuma.myapplication.FirebaseClass.FirestoreClass
 import com.bazuma.myapplication.R
 import com.bazuma.myapplication.models.CartItem
 import com.bazuma.myapplication.models.Product
@@ -96,7 +96,7 @@ class CartListActivity : BaseActivity() {
 
     private fun getCartItemsList(){
         showProgressDialog(resources.getString(R.string.please_wait))
-        FireStoreClass().getCartList(this)
+        FirestoreClass().getCartList(this)
     }
     fun itemRemoveSuccess(){
         hideProgressDialog()
@@ -113,7 +113,7 @@ class CartListActivity : BaseActivity() {
     }
     private fun getProductList(){
         showProgressDialog(resources.getString(R.string.please_wait))
-        FireStoreClass().getAllProductList(this)
+        FirestoreClass().getAllProductList(this)
     }
     fun successProductsListFromFirestore(productList:ArrayList<Product>){
         hideProgressDialog()

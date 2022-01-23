@@ -28,20 +28,19 @@
             android:layout_marginTop="80dp"
             android:text="@string/title_logo_name"
             android:textColor="@color/colorThemeBrown"
-            android:textSize="@dimen/title_app_textSize"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-           />
-
-        <!--
+            />
+   <!--
         <ImageView
-            android:layout_width="@dimen/auth_logo_width_size"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/auth_logo_height_size"
             android:layout_gravity="center"
             android:contentDescription="@string/app_name"
             android:scaleType="fitCenter"
-            android:src="@drawable/tutorials_eu_logo"
-            app:tint="@color/colorWhite" /> -->
+            android:src="@drawable/ic_bookshop"
+            app:tint="@color/colorWhite" />-->
     </FrameLayout>
     <com.bazuma.myapplication.utilis.BoldTextView
         android:id="@+id/tv_title"

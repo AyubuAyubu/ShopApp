@@ -14,9 +14,12 @@
         android:id="@+id/iv_dashboard_item_image"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_dashboard_image_height"
-        android:layout_margin="@dimen/item_dashboard_image_margin"
-        android:contentDescription="@string/content_description"
+        android:layout_marginStart="@dimen/item_dashboard_image_margin"
+        android:layout_marginTop="@dimen/item_dashboard_image_margin"
+        android:layout_marginEnd="@dimen/item_dashboard_image_margin"
+        android:layout_marginBottom="@dimen/item_dashboard_image_margin"
         android:background="@color/colorImageViewBackground"
+        android:contentDescription="@string/content_description"
         android:minHeight="@dimen/item_dashboard_image_height"
         android:scaleType="fitXY"
         android:src="@drawable/ic_background_launcher" />
@@ -36,11 +39,11 @@
         android:layout_below="@+id/view_divider"
         android:background="@color/dashboard_item_detail_background_bg"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/dashboard_item_paddingTopBottom"
-        android:paddingEnd="@dimen/dashboard_item_paddingStartEnd"
         android:paddingStart="@dimen/dashboard_item_paddingStartEnd"
-        android:paddingTop="@dimen@dashboard_item_paddingTopBottom"
-        >
+        android:paddingTop="5dp"
+        android:paddingEnd="@dimen/dashboard_item_paddingStartEnd"
+        android:paddingBottom="@dimen/dashboard_item_paddingTopBottom">
+
         <com.bazuma.myapplication.utilis.BoldTextView
             android:id="@+id/tv_dashboard_item_title"
             android:layout_width="match_parent"
@@ -55,9 +58,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/rv_item_price_marginTop"
-            android:textColor="item_value_text_color"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/rv_item_name_textSize"
             android:textStyle="bold"
-            tools:text="Ksh100.00"/>
+            tools:text="Ksh100.00" />
     </LinearLayout>
 </RelativeLayout>

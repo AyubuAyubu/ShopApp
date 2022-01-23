@@ -47,7 +47,7 @@
         android:id="@+id/tv_item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/item_value_text_color"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/rv_item_name_textSize"
         tools:text="Name" />
 
@@ -56,14 +56,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/rv_item_price_marginTop"
-        android:textColor="item_value_text_color"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/rv_item_name_textSize"
         android:textStyle="bold"
         tools:text="Ksh100.00"/>
     </LinearLayout>
     <ImageButton
         android:id="@+id/ib_delete_product"
-        android:layout_width="wrap_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@android:color/transparent"

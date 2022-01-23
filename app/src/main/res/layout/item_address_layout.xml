@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--TODO Step 1: Design the item layout for the Address-->
-<!--START-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -26,7 +25,7 @@
             android:layout_weight="1"
             android:textColor="@color/item_value_text_color"
             android:textSize="@dimen/item_address_name_textSize"
-            tools:text="Denis Panjuta" />
+            tools:text="Ayubu Ayubu" />
 
         <com.bazuma.myapplication.utilis.NormalTextView
             android:id="@+id/tv_address_type"
@@ -59,5 +58,5 @@
         android:layout_marginTop="@dimen/address_details_marginTop"
         android:textColor="@color/item_value_text_color"
         android:textSize="@dimen/address_details_textSize"
-        tools:text="+64 123456789" />
+        tools:text="+254778901133" />
 </LinearLayout>

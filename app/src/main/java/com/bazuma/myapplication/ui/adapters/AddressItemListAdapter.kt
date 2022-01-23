@@ -7,12 +7,11 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bazuma.myapplication.R
 import com.bazuma.myapplication.models.Address
+import com.bazuma.myapplication.ui.activities.AddEditAddressActivity
 import com.bazuma.myapplication.utilis.Constants
-import com.myshoppal.ui.activities.AddEditAddressActivity
 import kotlinx.android.synthetic.main.item_address_layout.view.*
 
 class AddressItemListAdapter(

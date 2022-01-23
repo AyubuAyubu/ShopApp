@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.bazuma.myapplication.FirebaseClass.FireStoreClass
+import com.bazuma.myapplication.FirebaseClass.FirestoreClass
 import com.bazuma.myapplication.R
 import com.bazuma.myapplication.models.User
 import com.bazuma.myapplication.utilis.Constants
@@ -37,7 +37,7 @@ class SettingActivity : BaseActivity() , View.OnClickListener{
 
     private fun getUserProfileDetails(){
         showProgressDialog(resources.getString(R.string.please_wait))
-        FireStoreClass().getUserDetails(this)
+        FirestoreClass().getUserDetails(this)
     }
 
     fun userDetailsSuccess(user: User){
